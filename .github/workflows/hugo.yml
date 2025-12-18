@@ -35,9 +35,13 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
         with:
-          submodules: recursive
-          fetch-depth: 0  # Важно для submodules
-          token: ${{ secrets.GITHUB_TOKEN }}
+          fetch-depth: 0
+      
+      - name: Remove .gitmodules if exists (cleanup)
+        run: |
+          if [ -f .gitmodules ]; then
+            rm .gitmodules
+          fi
       
       - name: Setup Pages
         id: pages
