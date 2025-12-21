@@ -1,4 +1,54 @@
-name: Deploy Hugo site to Pages
+- name: Build with Hugo
+  env:
+    HUGO_CACHEDIR: ${{ runner.temp }}/hugo_cache
+    HUGO_ENVIRONMENT: production
+    HUGO_ENV: production
+  run: |
+    # Clean previous build
+    rm -rf public
+    
+    # Initialize and update git submodules
+    git submodule update --init --recursive --depth 1
+    
+    # Create necessary directories
+    mkdir -p public/hugo/static
+    mkdir -p public/static
+    
+    # Build with the correct base URL
+    echo "Building Hugo site..."
+    hugo \
+      --gc \
+      --minify \
+      --cleanDestinationDir \
+      --baseURL "${{ steps.pages.outputs.base_url }}/hugo/" \
+      --destination public/hugo
+    
+    # Create a .nojekyll file to ensure proper static file serving
+    touch public/.nojekyll
+    
+    # Copy static files to the correct location
+    echo "Copying static files..."
+    
+    # Copy theme static files
+    if [ -d "themes/hugo-profile/static" ]; then
+      echo "Copying theme static files..."
+      cp -r themes/hugo-profile/static/* public/static/ 2>/dev/null || true
+      cp -r themes/hugo-profile/static/* public/hugo/static/ 2>/dev/null || true
+    fi
+    
+    # Copy project static files
+    if [ -d "static" ]; then
+      echo "Copying project static files..."
+      cp -r static/* public/static/ 2>/dev/null || true
+      cp -r static/* public/hugo/static/ 2>/dev/null || true
+    fi
+    
+    # Verify files were copied
+    echo "Verifying files in public/static/:"
+    ls -la public/static/ || echo "No static files found in public/static/"
+    
+    # Copy all files to root for GitHub Pages
+    cp -r public/hugo/* public/ 2>/dev/null || true
 
 on:
   push:

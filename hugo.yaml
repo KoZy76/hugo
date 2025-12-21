@@ -1,19 +1,18 @@
 baseURL: "https://KoZy76.github.io/hugo/"
 languageCode: "ru-ru"
-title: "Визитка Александра Власова"
-theme: hugo-profile
+params:
+  title: "Власов Александр"
+  description: "Визитка Александра Власова"
+  staticPath: "/hugo/static"   
+  basePath: "/hugo/"
 
-# Make sure we're using the correct base URL for all links
 canonifyURLs: true
 relativeURLs: false
 
-# Static files configuration
 staticDir: ["static", "themes/hugo-profile/static"]
 
-# Set the base directory for static files
 publishDir: "public"
 
-# Module configuration for theme static files
 module:
   mounts:
     - source: static
