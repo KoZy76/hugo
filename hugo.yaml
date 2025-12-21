@@ -7,6 +7,18 @@ theme: hugo-profile
 canonifyURLs: true
 relativeURLs: false
 
+# Static files configuration
+staticDir: ["static"]
+
+# Set the base directory for static files
+publishDir: "public"
+
+# Make sure static files are copied to the correct location
+module:
+  mounts:
+    - source: static
+      target: static
+
 outputs:
   home:
     - "HTML"
