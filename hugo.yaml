@@ -50,18 +50,37 @@ markup:
       unsafe: true
 
 # Navigation menu
-Menus:
+menu:
   main:
-    # Example menu items (commented out)
-    # - identifier: blog
-    #   name: Blog
-    #   title: Blog posts
-    #   url: /blogs
-    #   weight: 1
+    - identifier: about
+      name: Обо мне
+      url: "#about"
+      weight: 1
+    - identifier: experience
+      name: Опыт
+      url: "#experience"
+      weight: 2
+    - identifier: education
+      name: Образование
+      url: "#education"
+      weight: 3
+    - identifier: projects
+      name: Проекты
+      url: "#projects"
+      weight: 4
+    - identifier: achievements
+      name: Достижения
+      url: "#achievements"
+      weight: 5
+    - identifier: contact
+      name: Контакты
+      url: "#contact"
+      weight: 6
 
-  theme:
-    # disableThemeToggle: true
-    # defaultTheme: "light" # dark
+# Theme configuration
+theme:
+  # disableThemeToggle: true
+  # defaultTheme: "light" # dark
 
   font:
     fontSize: 1rem # default: 1rem
@@ -89,7 +108,7 @@ Menus:
   #     primaryColor: "#ffffff"
   #     secondaryColor: "#212529"
 
-  # If you want to customize the menu, you can change it here
+  # Navbar configuration
   navbar:
     align: ms-auto # Left: ms-auto | center: mx-auto | right: me-auto | Default: ms-auto
     # brandLogo: "/logo.png" # Logo for the brand | default is the favicon variable
