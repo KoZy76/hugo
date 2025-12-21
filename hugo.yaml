@@ -1,5 +1,6 @@
 baseURL: "https://KoZy76.github.io/hugo/"
 languageCode: "ru-ru"
+theme: "hugo-profile"
 
 # Site parameters
 params:
@@ -78,15 +79,15 @@ menu:
       weight: 6
 
 # Theme configuration
-theme:
-  # disableThemeToggle: true
-  # defaultTheme: "light" # dark
+[params.theme]
+  # disableThemeToggle = true
+  # defaultTheme = "light" # dark
 
-  font:
-    fontSize: 1rem # default: 1rem
-    fontWeight: 400 # default: 400
-    lineHeight: 1.5 # default: 1.5
-    textAlign: left # default: left
+[params.theme.font]
+  fontSize = "1rem" # default: 1rem
+  fontWeight = 400 # default: 400
+  lineHeight = 1.5 # default: 1.5
+  textAlign = "left" # default: left
 
   # color preference
   # When using hex codes for colors, quotations must be used along with the # sign
@@ -108,25 +109,27 @@ theme:
   #     primaryColor: "#ffffff"
   #     secondaryColor: "#212529"
 
-  # Navbar configuration
-  navbar:
-    align: ms-auto # Left: ms-auto | center: mx-auto | right: me-auto | Default: ms-auto
-    # brandLogo: "/logo.png" # Logo for the brand | default is the favicon variable
-    # showBrandLogo: false # Show brand logo in nav bar | default is true
-    brandName: "Профиль" # Brand name for the brand | default is the title variable
-    disableSearch: true
-    # searchPlaceholder: "Search"
-    stickyNavBar:
-      enable : true
-      showOnScrollUp : true
-    enableSeparator: false
-    menus:
-      disableAbout: false
-      disableExperience: false
-      disableEducation: false
-      disableProjects: false
-      disableAchievements: false
-      disableContact: false
+# Navbar configuration
+[params.theme.navbar]
+  align = "ms-auto" # Left: ms-auto | center: mx-auto | right: me-auto | Default: ms-auto
+  # brandLogo = "/logo.png" # Logo for the brand | default is the favicon variable
+  # showBrandLogo = false # Show brand logo in nav bar | default is true
+  brandName = "Профиль" # Brand name for the brand | default is the title variable
+  disableSearch = true
+  # searchPlaceholder = "Search"
+  enableSeparator = false
+  
+  [params.theme.navbar.stickyNavBar]
+    enable = true
+    showOnScrollUp = true
+    
+  [params.theme.navbar.menus]
+    disableAbout = false
+    disableExperience = false
+    disableEducation = false
+    disableProjects = false
+    disableAchievements = false
+    disableContact = false
 
   # Hero
   hero:
