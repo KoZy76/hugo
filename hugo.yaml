@@ -2,22 +2,25 @@ baseURL: "https://KoZy76.github.io/hugo/"
 languageCode: "ru-ru"
 theme: "hugo-profile"
 
-# Site parameters
-params:
-  title: "Власов Александр"
-  description: "Визитка Александра Власова"
-  staticPath: "/hugo/static"
-  basePath: "/hugo/"
-  favicon: "/fav.png"
-  useBootstrapCDN: false
-  mathjax: false
-  animate: true
-
 # Hugo configuration
 canonifyURLs: true
 relativeURLs: false
 staticDir: ["static", "themes/hugo-profile/static"]
 publishDir: "public"
+
+# Site configuration
+params:
+  # Basic site info
+  title: "Власов Александр"
+  description: "Визитка Александра Власова"
+  staticPath: "/hugo/static"
+  basePath: "/hugo/"
+  favicon: "/fav.png"
+  
+  # Features
+  useBootstrapCDN: false
+  mathjax: false
+  animate: true
 
 # Module configuration
 module:
@@ -78,8 +81,7 @@ menu:
       url: "#contact"
       weight: 6
 
-# Theme configuration
-params:
+  # Theme configuration
   theme:
     # disableThemeToggle: true
     # defaultTheme: "light" # dark
