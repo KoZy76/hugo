@@ -1,18 +1,24 @@
 baseURL: "https://KoZy76.github.io/hugo/"
 languageCode: "ru-ru"
+
+# Site parameters
 params:
   title: "Власов Александр"
   description: "Визитка Александра Власова"
-  staticPath: "/hugo/static"   
+  staticPath: "/hugo/static"
   basePath: "/hugo/"
+  favicon: "/fav.png"
+  useBootstrapCDN: false
+  mathjax: false
+  animate: true
 
+# Hugo configuration
 canonifyURLs: true
 relativeURLs: false
-
 staticDir: ["static", "themes/hugo-profile/static"]
-
 publishDir: "public"
 
+# Module configuration
 module:
   mounts:
     - source: static
@@ -20,6 +26,7 @@ module:
     - source: themes/hugo-profile/static
       target: static
 
+# Output configuration
 outputs:
   home:
     - "HTML"
@@ -29,74 +36,28 @@ outputs:
     - "HTML"
     - "RSS"
 
+# Site features
 enableRobotsTXT: true
 
-#services:
-  #googleAnalytics:
-    #id: G-MEASUREMENT_ID
-  #disqus:
-    #shortname: your-disqus-shortname
-
+# Pagination
 pagination:
   pagerSize: 3
 
+# Markup settings
 markup:
   goldmark:
     renderer:
       unsafe: true
 
+# Navigation menu
 Menus:
   main:
-    #- identifier: blog
-     # name: Blog
-      #title: Blog posts
-      #url: /blogs
-      #weight: 1
-    - #identifier: gallery
-      #name: Gallery
-     # title: Blog posts
-      #url: /gallery
-      #weight: 2
-    #Dropdown menu
-    # - identifier: dropdown
-    #   title: Example dropdown menu
-    #   name: Dropdown
-    #   weight: 3
-    # - identifier: dropdown1
-    #   title: example dropdown 1
-    #   name: example 1
-    #   url: /#
-    #   parent: dropdown
+    # Example menu items (commented out)
+    # - identifier: blog
+    #   name: Blog
+    #   title: Blog posts
+    #   url: /blogs
     #   weight: 1
-    # - identifier: dropdown2
-    #   title: example dropdown 2
-    #   name: example 2
-    #   url: /#
-    #   parent: dropdown
-    #   weight: 2
-
-params:
-  title: "Власов Александр"
-  description: Визитка Александра Власова
-  staticPath: "/hugo"  # The path to serve the static files from
-  basePath: "/hugo/"   # Base path for all URLs
-  favicon: "/fav.png"
-
-  # Whether to serve bootstrap css and js files from CDN or not. Can be set to true, "css" or "js" to choose between
-  # serving both, only the css, or only the js files through the CDN. Any other value will make so that CDN is not used.
-  # Note the lack of "" in true, it should be of boolean type.
-  useBootstrapCDN: false
-
-  # If you want to load dynamically responsive images from Cloudinary
-  # This requires your images to be uploaded + hosted on Cloudinary
-  # Uncomment and change YOUR_CLOUD_NAME to the Cloud Name in your Cloudinary console
-  # cloudinary_cloud_name: "YOUR_CLOUD_NAME"
-
-  # Whether to add mathjax support on all pages. Alternatively, you can opt-in per page by adding `mathjax: true` in the frontmatter.
-  mathjax: false
-
-  # Whether the fade animations on the home page will be enabled
-  animate: true
 
   theme:
     # disableThemeToggle: true
