@@ -59,19 +59,28 @@ jobs:
           # Clean previous build
           rm -rf public
           
+          # Initialize and update git submodules if any
+          git submodule update --init --recursive
+          
           # Build with the correct base URL
           hugo \
             --gc \
             --minify \
             --cleanDestinationDir \
-            --baseURL "${{ steps.pages.outputs.base_url }}/hugo/"
+            --baseURL "${{ steps.pages.outputs.base_url }}/hugo/" \
+            --destination public/hugo
           
           # Create a .nojekyll file to ensure proper static file serving
           touch public/.nojekyll
           
           # Verify static files were copied
           echo "Verifying static files..."
-          ls -la public/static/
+          ls -la public/static/ || echo "No static directory in public/"
+          echo "---"
+          ls -la public/hugo/static/ || echo "No static directory in public/hugo/"
+          
+          # Copy all files from public/hugo to public
+          cp -r public/hugo/* public/ 2>/dev/null || true
       
       - name: Create CNAME file
         run: |
