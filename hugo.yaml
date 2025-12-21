@@ -81,7 +81,8 @@ menu:
       url: "#contact"
       weight: 6
 
-  # Theme configuration
+# Theme configuration
+params:
   theme:
     # disableThemeToggle: true
     # defaultTheme: "light" # dark
