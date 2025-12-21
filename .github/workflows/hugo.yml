@@ -59,10 +59,14 @@ jobs:
           # Clean previous build
           rm -rf public
           
-          # Initialize and update git submodules if any
-          git submodule update --init --recursive
+          # Initialize and update git submodules
+          git submodule update --init --recursive --depth 1
+          
+          # Create necessary directories
+          mkdir -p public/hugo/static
           
           # Build with the correct base URL
+          echo "Building Hugo site..."
           hugo \
             --gc \
             --minify \
@@ -73,13 +77,23 @@ jobs:
           # Create a .nojekyll file to ensure proper static file serving
           touch public/.nojekyll
           
-          # Verify static files were copied
-          echo "Verifying static files..."
-          ls -la public/static/ || echo "No static directory in public/"
-          echo "---"
-          ls -la public/hugo/static/ || echo "No static directory in public/hugo/"
+          # Copy static files to the correct location
+          echo "Copying static files..."
+          if [ -d "themes/hugo-profile/static" ]; then
+            echo "Copying theme static files..."
+            cp -r themes/hugo-profile/static/* public/hugo/static/ 2>/dev/null || true
+          fi
           
-          # Copy all files from public/hugo to public
+          if [ -d "static" ]; then
+            echo "Copying project static files..."
+            cp -r static/* public/hugo/static/ 2>/dev/null || true
+          fi
+          
+          # Verify files were copied
+          echo "Verifying files in public/hugo/static/:"
+          ls -la public/hugo/static/ || echo "No static files found in public/hugo/static/"
+          
+          # Copy all files to root for GitHub Pages
           cp -r public/hugo/* public/ 2>/dev/null || true
       
       - name: Create CNAME file
