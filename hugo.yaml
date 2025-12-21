@@ -3,6 +3,10 @@ languageCode: "ru-ru"
 title: "Визитка Александра Власова"
 theme: hugo-profile
 
+# Make sure we're using the correct base URL for all links
+canonifyURLs: true
+relativeURLs: false
+
 outputs:
   home:
     - "HTML"
@@ -62,6 +66,7 @@ params:
   title: "Власов Александр"
   description: Визитка Александра Власова
   staticPath: "/hugo"  # The path to serve the static files from
+  basePath: "/hugo/"   # Base path for all URLs
   favicon: "/fav.png"
 
   # Whether to serve bootstrap css and js files from CDN or not. Can be set to true, "css" or "js" to choose between
