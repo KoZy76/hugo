@@ -13,7 +13,7 @@ params:
   # Basic site info
   title: "Власов Александр"
   description: "Визитка Александра Власова"
-  staticPath: "/hugo/static"
+  staticPath: "/hugo"
   basePath: "/hugo/"
   favicon: "/fav.png"
   
